@@ -33,9 +33,13 @@ header {
 }
 
 section {
+  margin: 0 auto;
+  max-width: 1250px;
   flex-grow: 1;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  align-content: flex-start;
   row-gap: 2rem;
   padding: 3rem 6rem;
   background-color: var(--base-color);
@@ -59,10 +63,16 @@ iframe {
   border-radius: 10px;
   padding: 1rem 2rem;
   margin-right: 2rem;
-  flex: 1 0 250px;
+  /* max-width: 20rem; */
+  flex: 1 0 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.card i {
+  align-self: center;
+  margin-bottom: 1rem;
 }
 
 .card button {
@@ -79,4 +89,5 @@ iframe {
 
 .card p {
   flex-grow: 1;
+  margin-bottom: 2rem;
 }
