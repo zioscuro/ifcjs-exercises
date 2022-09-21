@@ -1,3 +1,4 @@
+/* GENERAL SETUP */
 * {
   margin: 0;
   padding: 0;
@@ -31,10 +32,13 @@ header {
   text-align: center;
 }
 
-section {
-  max-width: 1250px;
-  flex-grow: 1;
+header h1 {
+  font-size: 2rem;
+}
 
+section {
+  flex-grow: 1;
+  max-width: 1250px;
   padding: 3rem 6rem;
   background-color: var(--base-color);
 }
@@ -57,11 +61,11 @@ footer {
 }
 
 .card {
+  flex: 1 0 200px;
+  margin-right: 2rem;
+  padding: 1rem 2rem;
   border: 2px solid var(--stroke-color);
   border-radius: 15px;
-  padding: 1rem 2rem;
-  margin-right: 2rem;
-  flex: 1 0 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -69,22 +73,27 @@ footer {
 }
 
 .card i {
+  margin: 1rem auto;
   font-size: 3rem;
   align-self: center;
-  margin: 1rem auto;
 }
 
-.card button {
-  
+.card button {  
   padding: 0.5rem 1rem;
+  font-weight: bold;
   background-color: var(--primary-color);
-  border-radius: 10px;
   border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .card button a {
   text-decoration: none;
-  color: var(--base-color);
+  color: var(--base-color);  
+}
+
+.card button:hover {  
+  background-color: var(--stroke-color);
 }
 
 .card h2 {
@@ -107,6 +116,19 @@ footer {
   max-width: 1250px;
   padding-left: 3rem;
   padding-right: 3rem;
+}
+
+.project-header nav a {
+  font-size: 1.2rem;
+  background-color: var(--stroke-color);
+  padding: 0.3rem 0.8rem;
+  text-decoration: none;
+  color: var(--base-color);
+  border-radius: 10px;
+}
+
+.project-header nav a:hover {
+  background-color: var(--tertiary-color);
 }
 
 .project-container {
@@ -165,6 +187,11 @@ footer {
   border: 2px solid var(--stroke-color);
   border-radius: 50%;
   background-color: var(--base-color);
+}
+
+.project-options button:hover i {
+  color: var(--tertiary-color);
+  border-color: var(--tertiary-color);;
 }
 
 @media screen and (max-width: 1000px) {
