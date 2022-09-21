@@ -1,3 +1,3 @@
 # ifcjs-exercises
 
-This repo contains my solutions for exercises in ifc.js crash course
+This repo contains my solutions to exercises in ifc.js crash course
