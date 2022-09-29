@@ -27,7 +27,12 @@ const main = document.querySelector('main');
 const galleryTitle = document.createElement('h1');
 galleryTitle.textContent = 'Zioscuro Project Gallery';
 
+header.classList.add('home-header');
 header.appendChild(galleryTitle);
+
+main.classList.add('card-container');
+main.classList.add('animate__animated');
+main.classList.add('animate__zoomIn');
 
 for (let project of projects) {
   const card = document.createElement('article');
@@ -129,7 +134,7 @@ viewButtons.forEach((link) => {
       header.classList.add('home-header');
       header.appendChild(galleryTitle);
 
-      main.classList.remove('project-container')
+      main.classList.remove('project-container');
       main.classList.add('card-container');
       main.classList.add('animate__animated');
       main.classList.add('animate__zoomIn');
