@@ -93,21 +93,18 @@ footer a {
   text-align: center;
 }
 
-.card a {
+.card button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 10px;
   background-color: var(--color-primary);
+  color: var(--color-base);
   font-weight: bold;
+  text-decoration: none;
   cursor: pointer;
 }
 
-.card a {
-  text-decoration: none;
-  color: var(--color-base);
-}
-
-.card a:hover {
+.card button:hover {
   background-color: var(--color-stroke);
 }
 
@@ -122,8 +119,9 @@ footer a {
   align-items: center;
 }
 
-.project-header nav a {
+.project-header nav button {
   padding: 0.3rem 0.8rem;
+  border: none;
   border-radius: 10px;
   background-color: var(--color-stroke);
   color: var(--color-base);
@@ -131,8 +129,9 @@ footer a {
   text-decoration: none;
 }
 
-.project-header nav a:hover {
+.project-header nav button:hover {
   background-color: var(--color-secondary);
+  cursor: pointer;
 }
 
 .project-container {
