@@ -6,7 +6,7 @@ const projects = [
   'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
 ];
 
-const cardContainer = document.querySelector('.card-container');
+const main = document.querySelector('main');
 
 for (let project of projects) {
   const card = document.createElement('article');
@@ -34,5 +34,5 @@ for (let project of projects) {
   card.appendChild(projectDescription);
   card.appendChild(viewButton);
 
-  cardContainer.appendChild(card);
+  main.appendChild(card);
 }

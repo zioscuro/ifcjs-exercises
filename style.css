@@ -19,7 +19,7 @@ html {
   font-size: 16px;
 }
 
-main {
+div.container {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@ header h1 {
   font-size: 2rem;
 }
 
-section {
+main {
   flex-grow: 1;
   max-width: var(--width-container);
   padding: 3rem 6rem;
@@ -62,13 +62,12 @@ footer a {
   justify-content: center;
   flex-wrap: wrap;
   align-content: flex-start;
+  gap: 2rem;
 }
 
 .card {
   max-width: 350px;
   flex: 1 0 200px;
-  margin-right: 2rem;
-  margin-bottom: 2rem;
   padding: 1rem 2rem;
   border: 2px solid var(--color-stroke);
   border-radius: 15px;
