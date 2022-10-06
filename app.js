@@ -24,148 +24,113 @@ const projects = [
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 
-const galleryTitle = document.createElement('h1');
-galleryTitle.textContent = 'Zioscuro Project Gallery';
+const renderHome = function renderHomePage() {
+  while (header.firstChild) {
+    header.removeChild(header.firstChild);
+  }
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
 
-header.classList.add('home-header');
-header.appendChild(galleryTitle);
+  header.classList.remove('project-header');
 
-main.classList.add('card-container');
-main.classList.add('animate__animated');
-main.classList.add('animate__zoomIn');
+  const galleryTitle = document.createElement('h1');
+  galleryTitle.textContent = 'Zioscuro Project Gallery';
 
-for (let project of projects) {
-  const card = document.createElement('article');
-  card.classList.add('card');
+  header.classList.add('home-header');
+  header.appendChild(galleryTitle);
 
-  const icon = document.createElement('i');
-  icon.classList.add('fa-solid');
-  icon.classList.add('fa-building');
+  main.classList.add('card-container');
+  main.classList.add('animate__animated');
+  main.classList.add('animate__zoomIn');
 
-  const projectTitle = document.createElement('h2');
-  projectTitle.classList.add('card-title');
-  projectTitle.textContent = project.name;
+  for (let project of projects) {
+    const card = document.createElement('article');
+    card.classList.add('card');
 
-  const projectDescription = document.createElement('p');
-  projectDescription.classList.add('project-description');
-  projectDescription.textContent = 'this is a sample project for now...';
+    const icon = document.createElement('i');
+    icon.classList.add('fa-solid');
+    icon.classList.add('fa-building');
 
-  const viewButton = document.createElement('button');
-  viewButton.classList.add('card-link');
-  viewButton.textContent = 'view';
+    const projectTitle = document.createElement('h2');
+    projectTitle.classList.add('card-title');
+    projectTitle.textContent = project.name;
 
-  card.appendChild(icon);
-  card.appendChild(projectTitle);
-  card.appendChild(projectDescription);
-  card.appendChild(viewButton);
+    const projectDescription = document.createElement('p');
+    projectDescription.classList.add('project-description');
+    projectDescription.textContent = 'this is a sample project for now...';
 
-  main.appendChild(card);
-}
+    const viewButton = document.createElement('button');
+    viewButton.classList.add('card-link');
+    viewButton.textContent = 'view';
+    viewButton.addEventListener('click', renderProject)
 
-const viewButtons = document.querySelectorAll('.card-link');
+    card.appendChild(icon);
+    card.appendChild(projectTitle);
+    card.appendChild(projectDescription);
+    card.appendChild(viewButton);
 
-viewButtons.forEach((link) => {
-  link.addEventListener('click', () => {
-    while (header.firstChild) {
-      header.removeChild(header.firstChild);
-    }
-    header.classList.remove('home-header');
-    header.classList.add('project-header');
+    main.appendChild(card);
+  }
+};
 
-    const headerNav = document.createElement('nav');
+const renderProject = function renderProjectPage() {
+  while (header.firstChild) {
+    header.removeChild(header.firstChild);
+  }
+  header.classList.remove('home-header');
+  header.classList.add('project-header');
 
-    const projectNavTitle = document.createElement('h1');
-    projectNavTitle.textContent = 'project 1';
+  const headerNav = document.createElement('nav');
 
-    const projectNavButton = document.createElement('button');
-    projectNavButton.textContent = 'home';
+  const projectNavTitle = document.createElement('h1');
+  projectNavTitle.textContent = 'project 1';
 
-    headerNav.appendChild(projectNavTitle);
-    headerNav.appendChild(projectNavButton);
+  const projectNavButton = document.createElement('button');
+  projectNavButton.textContent = 'home';
+  projectNavButton.addEventListener('click', renderHome)
 
-    header.appendChild(headerNav);
+  headerNav.appendChild(projectNavTitle);
+  headerNav.appendChild(projectNavButton);
 
-    while (main.firstChild) {
-      main.removeChild(main.firstChild);
-    }
+  header.appendChild(headerNav);
 
-    main.classList.remove('card-container');
-    main.classList.remove('animate__animated');
-    main.classList.remove('animate__zoomIn');
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
 
-    main.classList.add('project-container');
+  main.classList.remove('card-container');
+  main.classList.remove('animate__animated');
+  main.classList.remove('animate__zoomIn');
 
-    const projectInfo = document.createElement('section');
-    projectInfo.classList.add('project-info');
-    projectInfo.classList.add('animate__animated');
-    projectInfo.classList.add('animate__fadeInLeft');
+  main.classList.add('project-container');
 
-    const infoName = document.createElement('h4');
-    infoName.textContent = 'sample project';
+  const projectInfo = document.createElement('section');
+  projectInfo.classList.add('project-info');
+  projectInfo.classList.add('animate__animated');
+  projectInfo.classList.add('animate__fadeInLeft');
 
-    projectInfo.appendChild(infoName);
+  const infoName = document.createElement('h4');
+  infoName.textContent = 'sample project';
 
-    const modelContainer = document.createElement('section');
-    modelContainer.classList.add('model-container');
-    modelContainer.classList.add('animate__animated');
-    modelContainer.classList.add('animate__fadeInRight');
+  projectInfo.appendChild(infoName);
 
-    const modelIframe = document.createElement('iframe');
-    modelIframe.setAttribute(
-      'src',
-      'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/'
-    );
-    modelIframe.setAttribute('frameborder', '0');
+  const modelContainer = document.createElement('section');
+  modelContainer.classList.add('model-container');
+  modelContainer.classList.add('animate__animated');
+  modelContainer.classList.add('animate__fadeInRight');
 
-    modelContainer.appendChild(modelIframe);
+  const modelIframe = document.createElement('iframe');
+  modelIframe.setAttribute(
+    'src',
+    'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/'
+  );
+  modelIframe.setAttribute('frameborder', '0');
 
-    main.appendChild(projectInfo);
-    main.appendChild(modelContainer);
+  modelContainer.appendChild(modelIframe);
 
-    projectNavButton.addEventListener('click', () => {
-      while (header.firstChild) {
-        header.removeChild(header.firstChild);
-      }
-      while (main.firstChild) {
-        main.removeChild(main.firstChild);
-      }
+  main.appendChild(projectInfo);
+  main.appendChild(modelContainer);
+};
 
-      header.classList.remove('project-header');
-      header.classList.add('home-header');
-      header.appendChild(galleryTitle);
-
-      main.classList.remove('project-container');
-      main.classList.add('card-container');
-      main.classList.add('animate__animated');
-      main.classList.add('animate__zoomIn');
-
-      for (let project of projects) {
-        const card = document.createElement('article');
-        card.classList.add('card');
-
-        const icon = document.createElement('i');
-        icon.classList.add('fa-solid');
-        icon.classList.add('fa-building');
-
-        const projectTitle = document.createElement('h2');
-        projectTitle.classList.add('card-title');
-        projectTitle.textContent = project.name;
-
-        const projectDescription = document.createElement('p');
-        projectDescription.classList.add('project-description');
-        projectDescription.textContent = 'this is a sample project for now...';
-
-        const viewButton = document.createElement('button');
-        viewButton.classList.add('card-link');
-        viewButton.textContent = 'view';
-
-        card.appendChild(icon);
-        card.appendChild(projectTitle);
-        card.appendChild(projectDescription);
-        card.appendChild(viewButton);
-
-        main.appendChild(card);
-      }
-    });
-  });
-});
+renderHome();
