@@ -26,13 +26,9 @@ const main = document.querySelector('main');
 
 const renderHome = function renderHomePage() {
   clearHeader();
-  renderHomeHeader(); 
-  // const galleryTitle = document.createElement('h1');
-  // galleryTitle.textContent = 'Zioscuro Project Gallery';  
-  // header.appendChild(galleryTitle);
-  // header.classList.add('home-header');
+  renderHomeHeader();
 
-  clearMain();  
+  clearMain();
   main.classList.add('card-container');
   main.classList.add('animate__animated');
   main.classList.add('animate__zoomIn');
@@ -69,10 +65,9 @@ const renderHome = function renderHomePage() {
 
 const renderProject = function renderProjectPage() {
   clearHeader();
-  renderProjectHeader();  
+  renderProjectHeader();
 
   clearMain();
-  
   main.classList.add('project-container');
 
   const projectInfo = document.createElement('section');
@@ -80,10 +75,94 @@ const renderProject = function renderProjectPage() {
   projectInfo.classList.add('animate__animated');
   projectInfo.classList.add('animate__fadeInLeft');
 
-  const infoName = document.createElement('h4');
-  infoName.textContent = 'sample project';
+  const infoList = document.createElement('ul');
 
-  projectInfo.appendChild(infoName);
+  // name
+  const infoListName = document.createElement('li');
+
+  const infoNameTitle = document.createElement('h4');
+  infoNameTitle.textContent = 'name';
+
+  const infoNameContent = document.createElement('p');
+  infoNameContent.textContent = 'sample project';
+
+  infoListName.appendChild(infoNameTitle);
+  infoListName.appendChild(infoNameContent);
+
+  infoList.appendChild(infoListName);
+
+  // author
+  const infoListAuthor = document.createElement('li');
+
+  const infoAuthorTitle = document.createElement('h4');
+  infoAuthorTitle.textContent = 'author';
+
+  const infoAuthorContent = document.createElement('p');
+  infoAuthorContent.textContent = 'zioscuro';
+
+  infoListAuthor.appendChild(infoAuthorTitle);
+  infoListAuthor.appendChild(infoAuthorContent);
+
+  infoList.appendChild(infoListAuthor);
+
+  // client
+  const infoListClient = document.createElement('li');
+
+  const infoClientTitle = document.createElement('h4');
+  infoClientTitle.textContent = 'client';
+
+  const infoClientContent = document.createElement('p');
+  infoClientContent.textContent = 'ifc.js crash course';
+
+  infoListClient.appendChild(infoClientTitle);
+  infoListClient.appendChild(infoClientContent);
+
+  infoList.appendChild(infoListClient);
+
+  // year
+  const infoListYear = document.createElement('li');
+
+  const infoYearTitle = document.createElement('h4');
+  infoYearTitle.textContent = 'year';
+
+  const infoYearContent = document.createElement('p');
+  infoYearContent.textContent = '2022';
+
+  infoListYear.appendChild(infoYearTitle);
+  infoListYear.appendChild(infoYearContent);
+
+  infoList.appendChild(infoListYear);
+
+  // type
+  const infoListType = document.createElement('li');
+
+  const infoTypeTitle = document.createElement('h4');
+  infoTypeTitle.textContent = 'type';
+
+  const infoTypeContent = document.createElement('p');
+  infoTypeContent.textContent = 'conceptual design';
+
+  infoListType.appendChild(infoTypeTitle);
+  infoListType.appendChild(infoTypeContent);
+
+  infoList.appendChild(infoListType);
+
+  // description
+  const infoListDescription = document.createElement('li');
+
+  const infoDescriptionTitle = document.createElement('h4');
+  infoDescriptionTitle.textContent = 'description';
+
+  const infoDescriptionContent = document.createElement('p');
+  infoDescriptionContent.textContent =
+    'lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint facere officia earum tempora deserunt commodi vero corporis, porro inventore, totam quis, voluptate culpa autem natus! Ea quaerat harum perspiciatis reiciendis sunt temporibus voluptatum iusto, impedit dolor id qui dignissimos.';
+
+  infoListDescription.appendChild(infoDescriptionTitle);
+  infoListDescription.appendChild(infoDescriptionContent);
+
+  infoList.appendChild(infoListDescription);
+
+  projectInfo.appendChild(infoList);
 
   const modelContainer = document.createElement('section');
   modelContainer.classList.add('model-container');
@@ -126,24 +205,24 @@ const renderHomeHeader = function renderHomePageHeader() {
 
   const galleryTitle = document.createElement('h1');
   galleryTitle.textContent = 'Zioscuro Project Gallery';
-  header.appendChild(galleryTitle);    
-}
+  header.appendChild(galleryTitle);
+};
 
 const renderProjectHeader = function renderProjectPageHeader() {
   header.classList.add('project-header');
-  
-  const headerNav = document.createElement('nav');  
+
+  const headerNav = document.createElement('nav');
 
   const projectNavTitle = document.createElement('h1');
   projectNavTitle.textContent = 'project 1';
-  
+
   const projectNavButton = document.createElement('button');
   projectNavButton.textContent = 'home';
   projectNavButton.addEventListener('click', renderHome);
-  
+
   headerNav.appendChild(projectNavTitle);
-  headerNav.appendChild(projectNavButton);  
+  headerNav.appendChild(projectNavButton);
   header.appendChild(headerNav);
-}
+};
 
 renderHome();
