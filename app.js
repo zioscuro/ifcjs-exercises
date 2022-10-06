@@ -1,21 +1,26 @@
 const projects = [
   {
+    id: 'project-001',
     name: 'project 1',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/',
   },
   {
+    id: 'project-002',
     name: 'project 2',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/02/',
   },
   {
+    id: 'project-003',
     name: 'project 3',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/03/',
   },
   {
+    id: 'project-004',
     name: 'project 4',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/04/',
   },
   {
+    id: 'project-005',
     name: 'project 5',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
   },
@@ -36,6 +41,7 @@ const renderHome = function renderHomePage() {
   for (let project of projects) {
     const card = document.createElement('article');
     card.classList.add('card');
+    card.id = project.id;
 
     const icon = document.createElement('i');
     icon.classList.add('fa-solid');
@@ -52,7 +58,16 @@ const renderHome = function renderHomePage() {
     const viewButton = document.createElement('button');
     viewButton.classList.add('card-link');
     viewButton.textContent = 'view';
-    viewButton.addEventListener('click', renderProject);
+    viewButton.addEventListener('click', (e) => {
+      const selectedProjectId = e.target.parentElement.id;
+
+      console.log(selectedProjectId);
+
+      const selectedProject = projects.find(
+        (project) => project.id === selectedProjectId
+      );
+      renderProject(selectedProject);
+    });
 
     card.appendChild(icon);
     card.appendChild(projectTitle);
@@ -63,9 +78,9 @@ const renderHome = function renderHomePage() {
   }
 };
 
-const renderProject = function renderProjectPage() {
+const renderProject = function renderProjectPage(project) {
   clearHeader();
-  renderProjectHeader();
+  renderProjectHeader(project.name);
 
   clearMain();
   main.classList.add('project-container');
@@ -84,7 +99,7 @@ const renderProject = function renderProjectPage() {
   infoNameTitle.textContent = 'name';
 
   const infoNameContent = document.createElement('p');
-  infoNameContent.textContent = 'sample project';
+  infoNameContent.textContent = project.name;
 
   infoListName.appendChild(infoNameTitle);
   infoListName.appendChild(infoNameContent);
@@ -154,8 +169,7 @@ const renderProject = function renderProjectPage() {
   infoDescriptionTitle.textContent = 'description';
 
   const infoDescriptionContent = document.createElement('p');
-  infoDescriptionContent.textContent =
-    'lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint facere officia earum tempora deserunt commodi vero corporis, porro inventore, totam quis, voluptate culpa autem natus! Ea quaerat harum perspiciatis reiciendis sunt temporibus voluptatum iusto, impedit dolor id qui dignissimos.';
+  infoDescriptionContent.textContent = 'this is a sample project for now...';
 
   infoListDescription.appendChild(infoDescriptionTitle);
   infoListDescription.appendChild(infoDescriptionContent);
@@ -172,7 +186,7 @@ const renderProject = function renderProjectPage() {
   const modelIframe = document.createElement('iframe');
   modelIframe.setAttribute(
     'src',
-    'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/'
+    project.link
   );
   modelIframe.setAttribute('frameborder', '0');
 
@@ -208,13 +222,13 @@ const renderHomeHeader = function renderHomePageHeader() {
   header.appendChild(galleryTitle);
 };
 
-const renderProjectHeader = function renderProjectPageHeader() {
+const renderProjectHeader = function renderProjectPageHeader(projectName) {
   header.classList.add('project-header');
 
   const headerNav = document.createElement('nav');
 
   const projectNavTitle = document.createElement('h1');
-  projectNavTitle.textContent = 'project 1';
+  projectNavTitle.textContent = projectName;
 
   const projectNavButton = document.createElement('button');
   projectNavButton.textContent = 'home';
