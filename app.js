@@ -25,21 +25,14 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
 
 const renderHome = function renderHomePage() {
-  while (header.firstChild) {
-    header.removeChild(header.firstChild);
-  }
-  while (main.firstChild) {
-    main.removeChild(main.firstChild);
-  }
+  clearHeader();
+  renderHomeHeader(); 
+  // const galleryTitle = document.createElement('h1');
+  // galleryTitle.textContent = 'Zioscuro Project Gallery';  
+  // header.appendChild(galleryTitle);
+  // header.classList.add('home-header');
 
-  header.classList.remove('project-header');
-
-  const galleryTitle = document.createElement('h1');
-  galleryTitle.textContent = 'Zioscuro Project Gallery';
-
-  header.classList.add('home-header');
-  header.appendChild(galleryTitle);
-
+  clearMain();  
   main.classList.add('card-container');
   main.classList.add('animate__animated');
   main.classList.add('animate__zoomIn');
@@ -63,7 +56,7 @@ const renderHome = function renderHomePage() {
     const viewButton = document.createElement('button');
     viewButton.classList.add('card-link');
     viewButton.textContent = 'view';
-    viewButton.addEventListener('click', renderProject)
+    viewButton.addEventListener('click', renderProject);
 
     card.appendChild(icon);
     card.appendChild(projectTitle);
@@ -75,34 +68,11 @@ const renderHome = function renderHomePage() {
 };
 
 const renderProject = function renderProjectPage() {
-  while (header.firstChild) {
-    header.removeChild(header.firstChild);
-  }
-  header.classList.remove('home-header');
-  header.classList.add('project-header');
+  clearHeader();
+  renderProjectHeader();  
 
-  const headerNav = document.createElement('nav');
-
-  const projectNavTitle = document.createElement('h1');
-  projectNavTitle.textContent = 'project 1';
-
-  const projectNavButton = document.createElement('button');
-  projectNavButton.textContent = 'home';
-  projectNavButton.addEventListener('click', renderHome)
-
-  headerNav.appendChild(projectNavTitle);
-  headerNav.appendChild(projectNavButton);
-
-  header.appendChild(headerNav);
-
-  while (main.firstChild) {
-    main.removeChild(main.firstChild);
-  }
-
-  main.classList.remove('card-container');
-  main.classList.remove('animate__animated');
-  main.classList.remove('animate__zoomIn');
-
+  clearMain();
+  
   main.classList.add('project-container');
 
   const projectInfo = document.createElement('section');
@@ -132,5 +102,48 @@ const renderProject = function renderProjectPage() {
   main.appendChild(projectInfo);
   main.appendChild(modelContainer);
 };
+
+const clearHeader = function clearHeaderSection() {
+  while (header.firstChild) {
+    header.removeChild(header.firstChild);
+  }
+  header.classList.remove('project-header');
+  header.classList.remove('home-header');
+};
+
+const clearMain = function clearMainSection() {
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
+  main.classList.remove('project-container');
+  main.classList.remove('card-container');
+  main.classList.remove('animate__animated');
+  main.classList.remove('animate__zoomIn');
+};
+
+const renderHomeHeader = function renderHomePageHeader() {
+  header.classList.add('home-header');
+
+  const galleryTitle = document.createElement('h1');
+  galleryTitle.textContent = 'Zioscuro Project Gallery';
+  header.appendChild(galleryTitle);    
+}
+
+const renderProjectHeader = function renderProjectPageHeader() {
+  header.classList.add('project-header');
+  
+  const headerNav = document.createElement('nav');  
+
+  const projectNavTitle = document.createElement('h1');
+  projectNavTitle.textContent = 'project 1';
+  
+  const projectNavButton = document.createElement('button');
+  projectNavButton.textContent = 'home';
+  projectNavButton.addEventListener('click', renderHome);
+  
+  headerNav.appendChild(projectNavTitle);
+  headerNav.appendChild(projectNavButton);  
+  header.appendChild(headerNav);
+}
 
 renderHome();
