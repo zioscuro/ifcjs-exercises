@@ -208,7 +208,47 @@ const renderProject = function renderProjectPage(project) {
   modelIframe.setAttribute('src', project.link);
   modelIframe.setAttribute('frameborder', '0');
 
+  const modelNav = document.createElement('nav');
+  modelNav.classList.add('project-options');
+
+  // ruler command
+  const rulerCommand = document.createElement('button');
+  const rulerIcon = document.createElement('i');
+  rulerIcon.classList.add('fa-solid');
+  rulerIcon.classList.add('fa-ruler');
+
+  rulerCommand.appendChild(rulerIcon);
+  modelNav.appendChild(rulerCommand);
+
+  // cube command
+  const cubeCommand = document.createElement('button');
+  const cubeIcon = document.createElement('i');
+  cubeIcon.classList.add('fa-solid');
+  cubeIcon.classList.add('fa-cube');
+
+  cubeCommand.appendChild(cubeIcon);
+  modelNav.appendChild(cubeCommand);
+
+  // glasses command
+  const glassesCommand = document.createElement('button');
+  const glassesIcon = document.createElement('i');
+  glassesIcon.classList.add('fa-solid');
+  glassesIcon.classList.add('fa-glasses');
+
+  glassesCommand.appendChild(glassesIcon);
+  modelNav.appendChild(glassesCommand);
+
+  // info command
+  const infoCommand = document.createElement('button');
+  const infoIcon = document.createElement('i');
+  infoIcon.classList.add('fa-solid');
+  infoIcon.classList.add('fa-circle-info');
+
+  infoCommand.appendChild(infoIcon);
+  modelNav.appendChild(infoCommand);
+
   modelContainer.appendChild(modelIframe);
+  modelContainer.appendChild(modelNav);
 
   main.appendChild(projectInfo);
   main.appendChild(modelContainer);
