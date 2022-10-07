@@ -51,6 +51,25 @@ const projects = [
   },
 ];
 
+const controls = [
+  {
+    name: 'ruler',
+    icon: 'fa-ruler',
+  },
+  {
+    name: 'sectionBox',
+    icon: 'fa-cube',
+  },
+  {
+    name: 'hideElement',
+    icon: 'fa-glasses',
+  },
+  {
+    name: 'infoElement',
+    icon: 'fa-circle-info',
+  },
+];
+
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 
@@ -101,65 +120,13 @@ const renderHome = function renderHomePage() {
 
 const renderProject = function renderProjectPage(project) {
   clearHeader();
-  renderProjectHeader(project.name);
+  renderProjectHeader(project);
 
   clearMain();
   main.classList.add('project-container');
 
   renderProjectInfo(project);
-
-  const modelContainer = document.createElement('section');
-  modelContainer.classList.add('model-container');
-  modelContainer.classList.add('animate__animated');
-  modelContainer.classList.add('animate__fadeInRight');
-
-  const modelIframe = document.createElement('iframe');
-  modelIframe.setAttribute('src', project.link);
-  modelIframe.setAttribute('frameborder', '0');
-
-  const modelNav = document.createElement('nav');
-  modelNav.classList.add('project-options');
-
-  // ruler command
-  const rulerCommand = document.createElement('button');
-  const rulerIcon = document.createElement('i');
-  rulerIcon.classList.add('fa-solid');
-  rulerIcon.classList.add('fa-ruler');
-
-  rulerCommand.appendChild(rulerIcon);
-  modelNav.appendChild(rulerCommand);
-
-  // cube command
-  const cubeCommand = document.createElement('button');
-  const cubeIcon = document.createElement('i');
-  cubeIcon.classList.add('fa-solid');
-  cubeIcon.classList.add('fa-cube');
-
-  cubeCommand.appendChild(cubeIcon);
-  modelNav.appendChild(cubeCommand);
-
-  // glasses command
-  const glassesCommand = document.createElement('button');
-  const glassesIcon = document.createElement('i');
-  glassesIcon.classList.add('fa-solid');
-  glassesIcon.classList.add('fa-glasses');
-
-  glassesCommand.appendChild(glassesIcon);
-  modelNav.appendChild(glassesCommand);
-
-  // info command
-  const infoCommand = document.createElement('button');
-  const infoIcon = document.createElement('i');
-  infoIcon.classList.add('fa-solid');
-  infoIcon.classList.add('fa-circle-info');
-
-  infoCommand.appendChild(infoIcon);
-  modelNav.appendChild(infoCommand);
-
-  modelContainer.appendChild(modelIframe);
-  modelContainer.appendChild(modelNav);
-
-  main.appendChild(modelContainer);
+  renderProjectModel(project);
 };
 
 const clearHeader = function clearHeaderSection() {
@@ -188,13 +155,13 @@ const renderHomeHeader = function renderHomePageHeader() {
   header.appendChild(galleryTitle);
 };
 
-const renderProjectHeader = function renderProjectPageHeader(projectName) {
+const renderProjectHeader = function renderProjectPageHeader(project) {
   header.classList.add('project-header');
 
   const headerNav = document.createElement('nav');
 
   const projectNavTitle = document.createElement('h1');
-  projectNavTitle.textContent = projectName;
+  projectNavTitle.textContent = project.name;
 
   const projectNavButton = document.createElement('button');
   projectNavButton.textContent = 'home';
@@ -234,6 +201,36 @@ const renderProjectInfo = function renderProjectInfoUnorderedList(project) {
   projectInfo.appendChild(infoList);
 
   main.appendChild(projectInfo);
+};
+
+const renderProjectModel = function renderProjectIframeAndCommands(project) {
+  const modelContainer = document.createElement('section');
+  modelContainer.classList.add('model-container');
+  modelContainer.classList.add('animate__animated');
+  modelContainer.classList.add('animate__fadeInRight');
+
+  const modelIframe = document.createElement('iframe');
+  modelIframe.setAttribute('src', project.link);
+  modelIframe.setAttribute('frameborder', '0');
+
+  const modelNav = document.createElement('nav');
+  modelNav.classList.add('project-options');
+
+  for (let control of controls) {
+    const controlButton = document.createElement('button');
+    const controlIcon = document.createElement('i');
+
+    controlIcon.classList.add('fa-solid');
+    controlIcon.classList.add(control.icon);
+
+    controlButton.appendChild(controlIcon);
+    modelNav.appendChild(controlButton);
+  }
+
+  modelContainer.appendChild(modelIframe);
+  modelContainer.appendChild(modelNav);
+
+  main.appendChild(modelContainer);
 };
 
 renderHome();
