@@ -73,11 +73,38 @@ const controls = [
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 
+const clearHeader = function clearHeaderSection() {
+  while (header.firstChild) {
+    header.removeChild(header.firstChild);
+  }
+  header.className = ''
+};
+
+const clearMain = function clearMainSection() {
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
+  main.className = ''
+};
+
 const renderHome = function renderHomePage() {
   clearHeader();
   renderHomeHeader();
 
   clearMain();
+  renderHomeMain();
+};
+
+const renderHomeHeader = function renderHomePageHeader() {
+  header.classList.add('home-header');
+
+  const galleryTitle = document.createElement('h1');
+  galleryTitle.textContent = 'Zioscuro Project Gallery';
+
+  header.appendChild(galleryTitle);
+};
+
+const renderHomeMain = function renderHomePageMain() {
   main.classList.add('card-container');
   main.classList.add('animate__animated');
   main.classList.add('animate__zoomIn');
@@ -97,7 +124,7 @@ const renderHome = function renderHomePage() {
 
     const projectDescription = document.createElement('p');
     projectDescription.classList.add('project-description');
-    projectDescription.textContent = 'this is a sample project for now...';
+    projectDescription.textContent = project.description;
 
     const viewButton = document.createElement('button');
     viewButton.classList.add('card-link');
@@ -123,36 +150,7 @@ const renderProject = function renderProjectPage(project) {
   renderProjectHeader(project);
 
   clearMain();
-  main.classList.add('project-container');
-
-  renderProjectInfo(project);
-  renderProjectModel(project);
-};
-
-const clearHeader = function clearHeaderSection() {
-  while (header.firstChild) {
-    header.removeChild(header.firstChild);
-  }
-  header.classList.remove('project-header');
-  header.classList.remove('home-header');
-};
-
-const clearMain = function clearMainSection() {
-  while (main.firstChild) {
-    main.removeChild(main.firstChild);
-  }
-  main.classList.remove('project-container');
-  main.classList.remove('card-container');
-  main.classList.remove('animate__animated');
-  main.classList.remove('animate__zoomIn');
-};
-
-const renderHomeHeader = function renderHomePageHeader() {
-  header.classList.add('home-header');
-
-  const galleryTitle = document.createElement('h1');
-  galleryTitle.textContent = 'Zioscuro Project Gallery';
-  header.appendChild(galleryTitle);
+  renderProjectMain(project);
 };
 
 const renderProjectHeader = function renderProjectPageHeader(project) {
@@ -171,6 +169,13 @@ const renderProjectHeader = function renderProjectPageHeader(project) {
   headerNav.appendChild(projectNavButton);
   header.appendChild(headerNav);
 };
+
+const renderProjectMain = function renderProjectPageMain(project) {
+  main.classList.add('project-container');
+
+  renderProjectInfo(project);
+  renderProjectModel(project);
+}
 
 const renderProjectInfo = function renderProjectInfoUnorderedList(project) {
   const projectInfo = document.createElement('section');
