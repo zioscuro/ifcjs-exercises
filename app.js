@@ -106,98 +106,7 @@ const renderProject = function renderProjectPage(project) {
   clearMain();
   main.classList.add('project-container');
 
-  const projectInfo = document.createElement('section');
-  projectInfo.classList.add('project-info');
-  projectInfo.classList.add('animate__animated');
-  projectInfo.classList.add('animate__fadeInLeft');
-
-  const infoList = document.createElement('ul');
-
-  // name
-  const infoListName = document.createElement('li');
-
-  const infoNameTitle = document.createElement('h4');
-  infoNameTitle.textContent = 'name';
-
-  const infoNameContent = document.createElement('p');
-  infoNameContent.textContent = project.name;
-
-  infoListName.appendChild(infoNameTitle);
-  infoListName.appendChild(infoNameContent);
-
-  infoList.appendChild(infoListName);
-
-  // author
-  const infoListAuthor = document.createElement('li');
-
-  const infoAuthorTitle = document.createElement('h4');
-  infoAuthorTitle.textContent = 'author';
-
-  const infoAuthorContent = document.createElement('p');
-  infoAuthorContent.textContent = project.author;
-
-  infoListAuthor.appendChild(infoAuthorTitle);
-  infoListAuthor.appendChild(infoAuthorContent);
-
-  infoList.appendChild(infoListAuthor);
-
-  // client
-  const infoListClient = document.createElement('li');
-
-  const infoClientTitle = document.createElement('h4');
-  infoClientTitle.textContent = 'client';
-
-  const infoClientContent = document.createElement('p');
-  infoClientContent.textContent = project.client;
-
-  infoListClient.appendChild(infoClientTitle);
-  infoListClient.appendChild(infoClientContent);
-
-  infoList.appendChild(infoListClient);
-
-  // year
-  const infoListYear = document.createElement('li');
-
-  const infoYearTitle = document.createElement('h4');
-  infoYearTitle.textContent = 'year';
-
-  const infoYearContent = document.createElement('p');
-  infoYearContent.textContent = project.year;
-
-  infoListYear.appendChild(infoYearTitle);
-  infoListYear.appendChild(infoYearContent);
-
-  infoList.appendChild(infoListYear);
-
-  // type
-  const infoListType = document.createElement('li');
-
-  const infoTypeTitle = document.createElement('h4');
-  infoTypeTitle.textContent = 'type';
-
-  const infoTypeContent = document.createElement('p');
-  infoTypeContent.textContent = project.type;
-
-  infoListType.appendChild(infoTypeTitle);
-  infoListType.appendChild(infoTypeContent);
-
-  infoList.appendChild(infoListType);
-
-  // description
-  const infoListDescription = document.createElement('li');
-
-  const infoDescriptionTitle = document.createElement('h4');
-  infoDescriptionTitle.textContent = 'description';
-
-  const infoDescriptionContent = document.createElement('p');
-  infoDescriptionContent.textContent = project.description;
-
-  infoListDescription.appendChild(infoDescriptionTitle);
-  infoListDescription.appendChild(infoDescriptionContent);
-
-  infoList.appendChild(infoListDescription);
-
-  projectInfo.appendChild(infoList);
+  renderProjectInfo(project);
 
   const modelContainer = document.createElement('section');
   modelContainer.classList.add('model-container');
@@ -250,7 +159,6 @@ const renderProject = function renderProjectPage(project) {
   modelContainer.appendChild(modelIframe);
   modelContainer.appendChild(modelNav);
 
-  main.appendChild(projectInfo);
   main.appendChild(modelContainer);
 };
 
@@ -295,6 +203,37 @@ const renderProjectHeader = function renderProjectPageHeader(projectName) {
   headerNav.appendChild(projectNavTitle);
   headerNav.appendChild(projectNavButton);
   header.appendChild(headerNav);
+};
+
+const renderProjectInfo = function renderProjectInfoUnorderedList(project) {
+  const projectInfo = document.createElement('section');
+  projectInfo.classList.add('project-info');
+  projectInfo.classList.add('animate__animated');
+  projectInfo.classList.add('animate__fadeInLeft');
+
+  const infoList = document.createElement('ul');
+
+  const filteredProject = { ...project };
+  delete filteredProject.id;
+  delete filteredProject.link;
+
+  for (let value in filteredProject) {
+    const propertyItem = document.createElement('li');
+    const propertyItemTitle = document.createElement('h4');
+    const propertyItemContent = document.createElement('p');
+
+    propertyItemTitle.textContent = value;
+    propertyItemContent.textContent = project[value];
+
+    propertyItem.appendChild(propertyItemTitle);
+    propertyItem.appendChild(propertyItemContent);
+
+    infoList.appendChild(propertyItem);
+  }
+
+  projectInfo.appendChild(infoList);
+
+  main.appendChild(projectInfo);
 };
 
 renderHome();
