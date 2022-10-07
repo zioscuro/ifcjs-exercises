@@ -2,26 +2,51 @@ const projects = [
   {
     id: 'project-001',
     name: 'project 1',
+    author: 'zioscuro',
+    client: 'ifc.js crash course',
+    year: '2022',
+    type: 'conceptual design',
+    description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/',
   },
   {
     id: 'project-002',
     name: 'project 2',
+    author: 'zioscuro',
+    client: 'ifc.js crash course',
+    year: '2022',
+    type: 'conceptual design',
+    description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/02/',
   },
   {
     id: 'project-003',
     name: 'project 3',
+    author: 'zioscuro',
+    client: 'ifc.js crash course',
+    year: '2022',
+    type: 'conceptual design',
+    description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/03/',
   },
   {
     id: 'project-004',
     name: 'project 4',
+    author: 'zioscuro',
+    client: 'ifc.js crash course',
+    year: '2022',
+    type: 'conceptual design',
+    description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/04/',
   },
   {
     id: 'project-005',
     name: 'project 5',
+    author: 'zioscuro',
+    client: 'ifc.js crash course',
+    year: '2022',
+    type: 'conceptual design',
+    description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
   },
 ];
@@ -59,12 +84,8 @@ const renderHome = function renderHomePage() {
     viewButton.classList.add('card-link');
     viewButton.textContent = 'view';
     viewButton.addEventListener('click', (e) => {
-      const selectedProjectId = e.target.parentElement.id;
-
-      console.log(selectedProjectId);
-
       const selectedProject = projects.find(
-        (project) => project.id === selectedProjectId
+        (project) => project.id === e.target.parentElement.id
       );
       renderProject(selectedProject);
     });
@@ -113,7 +134,7 @@ const renderProject = function renderProjectPage(project) {
   infoAuthorTitle.textContent = 'author';
 
   const infoAuthorContent = document.createElement('p');
-  infoAuthorContent.textContent = 'zioscuro';
+  infoAuthorContent.textContent = project.author;
 
   infoListAuthor.appendChild(infoAuthorTitle);
   infoListAuthor.appendChild(infoAuthorContent);
@@ -127,7 +148,7 @@ const renderProject = function renderProjectPage(project) {
   infoClientTitle.textContent = 'client';
 
   const infoClientContent = document.createElement('p');
-  infoClientContent.textContent = 'ifc.js crash course';
+  infoClientContent.textContent = project.client;
 
   infoListClient.appendChild(infoClientTitle);
   infoListClient.appendChild(infoClientContent);
@@ -141,7 +162,7 @@ const renderProject = function renderProjectPage(project) {
   infoYearTitle.textContent = 'year';
 
   const infoYearContent = document.createElement('p');
-  infoYearContent.textContent = '2022';
+  infoYearContent.textContent = project.year;
 
   infoListYear.appendChild(infoYearTitle);
   infoListYear.appendChild(infoYearContent);
@@ -155,7 +176,7 @@ const renderProject = function renderProjectPage(project) {
   infoTypeTitle.textContent = 'type';
 
   const infoTypeContent = document.createElement('p');
-  infoTypeContent.textContent = 'conceptual design';
+  infoTypeContent.textContent = project.type;
 
   infoListType.appendChild(infoTypeTitle);
   infoListType.appendChild(infoTypeContent);
@@ -169,7 +190,7 @@ const renderProject = function renderProjectPage(project) {
   infoDescriptionTitle.textContent = 'description';
 
   const infoDescriptionContent = document.createElement('p');
-  infoDescriptionContent.textContent = 'this is a sample project for now...';
+  infoDescriptionContent.textContent = project.description;
 
   infoListDescription.appendChild(infoDescriptionTitle);
   infoListDescription.appendChild(infoDescriptionContent);
@@ -184,10 +205,7 @@ const renderProject = function renderProjectPage(project) {
   modelContainer.classList.add('animate__fadeInRight');
 
   const modelIframe = document.createElement('iframe');
-  modelIframe.setAttribute(
-    'src',
-    project.link
-  );
+  modelIframe.setAttribute('src', project.link);
   modelIframe.setAttribute('frameborder', '0');
 
   modelContainer.appendChild(modelIframe);
