@@ -1,24 +1,24 @@
-import { projects } from "./app-data.js";
-import { controls } from "./app-data.js";
+import { projects } from './app-data.js';
+import { controls } from './app-data.js';
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 
-const clearHeader = function clearHeaderSection() {
+const clearHeader = () => {
   while (header.firstChild) {
     header.removeChild(header.firstChild);
   }
-  header.className = ''
+  header.className = '';
 };
 
-const clearMain = function clearMainSection() {
+const clearMain = () => {
   while (main.firstChild) {
     main.removeChild(main.firstChild);
   }
-  main.className = ''
+  main.className = '';
 };
 
-const renderHome = function renderHomePage() {
+const renderHome = () => {
   clearHeader();
   renderHomeHeader();
 
@@ -26,7 +26,7 @@ const renderHome = function renderHomePage() {
   renderHomeMain();
 };
 
-const renderHomeHeader = function renderHomePageHeader() {
+const renderHomeHeader = () => {
   header.classList.add('home-header');
 
   const galleryTitle = document.createElement('h1');
@@ -35,7 +35,7 @@ const renderHomeHeader = function renderHomePageHeader() {
   header.appendChild(galleryTitle);
 };
 
-const renderHomeMain = function renderHomePageMain() {
+const renderHomeMain = () => {
   main.classList.add('card-container');
   main.classList.add('animate__animated');
   main.classList.add('animate__zoomIn');
@@ -76,7 +76,7 @@ const renderHomeMain = function renderHomePageMain() {
   }
 };
 
-const renderProject = function renderProjectPage(project) {
+const renderProject = (project) => {
   clearHeader();
   renderProjectHeader(project);
 
@@ -84,7 +84,7 @@ const renderProject = function renderProjectPage(project) {
   renderProjectMain(project);
 };
 
-const renderProjectHeader = function renderProjectPageHeader(project) {
+const renderProjectHeader = (project) => {
   header.classList.add('project-header');
 
   const headerNav = document.createElement('nav');
@@ -101,14 +101,14 @@ const renderProjectHeader = function renderProjectPageHeader(project) {
   header.appendChild(headerNav);
 };
 
-const renderProjectMain = function renderProjectPageMain(project) {
+const renderProjectMain = (project) => {
   main.classList.add('project-container');
 
   renderProjectInfo(project);
   renderProjectModel(project);
-}
+};
 
-const renderProjectInfo = function renderProjectInfoUnorderedList(project) {
+const renderProjectInfo = (project) => {
   const projectInfo = document.createElement('section');
   projectInfo.classList.add('project-info');
   projectInfo.classList.add('animate__animated');
@@ -139,7 +139,7 @@ const renderProjectInfo = function renderProjectInfoUnorderedList(project) {
   main.appendChild(projectInfo);
 };
 
-const renderProjectModel = function renderProjectIframeAndCommands(project) {
+const renderProjectModel = (project) => {
   const modelContainer = document.createElement('section');
   modelContainer.classList.add('model-container');
   modelContainer.classList.add('animate__animated');
