@@ -54,6 +54,39 @@ const projects = [
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/05.ifc'
   },
+  {
+    id: 'project-006',
+    name: 'project 6',
+    author: 'zioscuro',
+    client: 'ifc.js crash course',
+    year: '2022',
+    type: 'conceptual design',
+    description: 'this is a sample project for now...',
+    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
+    ifcPath: './IFC/06.ifc'
+  },
+  {
+    id: 'project-007',
+    name: 'project 7',
+    author: 'zioscuro',
+    client: 'ifc.js crash course',
+    year: '2022',
+    type: 'conceptual design',
+    description: 'this is a sample project for now...',
+    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
+    ifcPath: './IFC/07.ifc'
+  },
+  {
+    id: 'project-008',
+    name: 'project 8',
+    author: 'zioscuro',
+    client: 'ifc.js crash course',
+    year: '2022',
+    type: 'conceptual design',
+    description: 'this is a sample project for now...',
+    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
+    ifcPath: './IFC/08.ifc'
+  },
 ];
 
 const controls = [
@@ -122010,6 +122043,7 @@ const renderProjectInfo = (project) => {
   const filteredProject = { ...project };
   delete filteredProject.id;
   delete filteredProject.link;
+  delete filteredProject.ifcPath;
 
   for (let value in filteredProject) {
     const propertyItem = document.createElement('li');
