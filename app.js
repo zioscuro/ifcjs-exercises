@@ -1,6 +1,6 @@
 import { projects } from './app-data.js';
 import { controls } from './app-data.js';
-import { loadIfc } from './ifc-loader.js';
+// import { loadIfc } from './ifc-loader.js';
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
