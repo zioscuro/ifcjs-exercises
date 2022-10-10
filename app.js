@@ -1,6 +1,7 @@
 import { projects } from './app-data.js';
 import { controls } from './app-data.js';
-// import { loadIfc } from './ifc-loader.js';
+import { Color } from 'three';
+import { IfcViewerAPI } from 'web-ifc-viewer';
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
@@ -141,35 +142,48 @@ const renderProjectInfo = (project) => {
 };
 
 const renderProjectModel = (project) => {
+  
   const modelContainer = document.createElement('section');
   modelContainer.classList.add('model-container');
   modelContainer.classList.add('animate__animated');
   modelContainer.classList.add('animate__fadeInRight');
-
-  const modelIframe = document.createElement('iframe');
-  modelIframe.setAttribute('src', project.link);
-  modelIframe.setAttribute('frameborder', '0');
-
+  
+  const modelViewer = document.createElement('div');
+  modelViewer.setAttribute('id', 'model-viewer');
+  
   const modelNav = document.createElement('nav');
   modelNav.classList.add('project-options');
-
+  
   for (let control of controls) {
     const controlButton = document.createElement('button');
     const controlIcon = document.createElement('i');
-
+    
     controlIcon.classList.add('fa-solid');
     controlIcon.classList.add(control.icon);
-
+    
     controlButton.appendChild(controlIcon);
     modelNav.appendChild(controlButton);
   }
-
-  modelContainer.appendChild(modelIframe);
+  
+  modelContainer.appendChild(modelViewer);
   modelContainer.appendChild(modelNav);
-
+  
   main.appendChild(modelContainer);
+  
+  const container = document.getElementById('model-viewer');
+  const viewer = new IfcViewerAPI({
+    container,
+    backgroundColor: new Color(0xffffff),
+  });
+  viewer.grid.setGrid();
+  viewer.axes.setAxes();
+
+  async function loadIfc(url) {
+    const model = await viewer.IFC.loadIfcUrl(url);
+    viewer.shadowDropper.renderShadow(model.modelID);
+  }
+
+  loadIfc(project.ifcPath);
 };
 
 renderHome();
-
-//loadIfc('./IFC/01.ifc');
