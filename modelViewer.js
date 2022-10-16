@@ -18,6 +18,9 @@ import {
   GridHelper,
   DirectionalLight,
   AmbientLight,
+  BoxGeometry,
+  MeshPhongMaterial,
+  Mesh
 } from 'three';
 
 import CameraControls from 'camera-controls';
@@ -49,6 +52,10 @@ export function viewerHandler() {
   scene.add(axes, grid);
 
   //2 OGGETTI
+  const geometry = new BoxGeometry(0.5, 0.5, 0.5);
+  const material = new MeshPhongMaterial({ color: 'orange' });
+  const cubeMesh = new Mesh(geometry, material);
+  scene.add(cubeMesh);
 
   //3 CAMERA
   const camera = new PerspectiveCamera(
