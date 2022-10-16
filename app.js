@@ -1,7 +1,5 @@
-import { projects } from './app-data.js';
-import { controls } from './app-data.js';
-import { Color } from 'three';
-import { IfcViewerAPI } from 'web-ifc-viewer';
+import { projects, controls } from './app-data.js';
+import { viewerHandler } from './modelViewer';
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
@@ -121,7 +119,7 @@ const renderProjectInfo = (project) => {
   const filteredProject = { ...project };
   delete filteredProject.id;
   delete filteredProject.link;
-  delete filteredProject.ifcPath
+  delete filteredProject.ifcPath;
 
   for (let value in filteredProject) {
     const propertyItem = document.createElement('li');
@@ -142,49 +140,35 @@ const renderProjectInfo = (project) => {
   main.appendChild(projectInfo);
 };
 
-const renderProjectModel = (project) => {
-  
+const renderProjectModel = () => {
   const modelContainer = document.createElement('section');
   modelContainer.classList.add('model-container');
   modelContainer.classList.add('animate__animated');
   modelContainer.classList.add('animate__fadeInRight');
-  
-  const modelViewer = document.createElement('div');
+
+  const modelViewer = document.createElement('canvas');
   modelViewer.setAttribute('id', 'model-viewer');
-  
+
   const modelNav = document.createElement('nav');
   modelNav.classList.add('project-options');
-  
+
   for (let control of controls) {
     const controlButton = document.createElement('button');
     const controlIcon = document.createElement('i');
-    
+
     controlIcon.classList.add('fa-solid');
     controlIcon.classList.add(control.icon);
-    
+
     controlButton.appendChild(controlIcon);
     modelNav.appendChild(controlButton);
   }
-  
+
   modelContainer.appendChild(modelViewer);
   modelContainer.appendChild(modelNav);
-  
+
   main.appendChild(modelContainer);
-  
-  const container = document.getElementById('model-viewer');
-  const viewer = new IfcViewerAPI({
-    container,
-    backgroundColor: new Color(0xffffff),
-  });
-  viewer.grid.setGrid();
-  viewer.axes.setAxes();
 
-  async function loadIfc(url) {
-    const model = await viewer.IFC.loadIfcUrl(url);
-    viewer.shadowDropper.renderShadow(model.modelID);
-  }
-
-  loadIfc(project.ifcPath);
+  viewerHandler();
 };
 
 renderHome();
