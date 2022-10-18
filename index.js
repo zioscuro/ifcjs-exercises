@@ -120,6 +120,7 @@ const renderProjectInfo = (project) => {
   delete filteredProject.id;
   delete filteredProject.link;
   delete filteredProject.ifcPath;
+  delete filteredProject.cameraPosition;
 
   for (let value in filteredProject) {
     const propertyItem = document.createElement('li');
@@ -140,7 +141,7 @@ const renderProjectInfo = (project) => {
   main.appendChild(projectInfo);
 };
 
-const renderProjectModel = () => {
+const renderProjectModel = (project) => {
   const modelContainer = document.createElement('section');
   modelContainer.classList.add('model-container');
   modelContainer.classList.add('animate__animated');
@@ -168,7 +169,7 @@ const renderProjectModel = () => {
 
   main.appendChild(modelContainer);
 
-  viewerHandler();
+  viewerHandler(project);
 };
 
 renderHome();
