@@ -8,7 +8,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/',
-    ifcPath: './IFC/01.ifc'
+    ifcPath: '../IFC/01.ifc'
   },
   {
     id: 'project-002',
@@ -19,7 +19,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/02/',
-    ifcPath: './IFC/02.ifc'
+    ifcPath: '../IFC/02.ifc'
   },
   {
     id: 'project-003',
@@ -30,7 +30,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/03/',
-    ifcPath: './IFC/03.ifc'
+    ifcPath: '../IFC/03.ifc'
   },
   {
     id: 'project-004',
@@ -41,7 +41,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/04/',
-    ifcPath: './IFC/04.ifc'
+    ifcPath: '../IFC/04.ifc'
   },
   {
     id: 'project-005',
@@ -52,7 +52,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
-    ifcPath: './IFC/05.ifc'
+    ifcPath: '../IFC/05.ifc'
   },
   {
     id: 'project-006',
@@ -63,7 +63,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
-    ifcPath: './IFC/06.ifc'
+    ifcPath: '../IFC/06.ifc'
   },
   {
     id: 'project-007',
@@ -74,7 +74,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
-    ifcPath: './IFC/07.ifc'
+    ifcPath: '../IFC/07.ifc'
   },
   {
     id: 'project-008',
@@ -85,7 +85,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
-    ifcPath: './IFC/08.ifc'
+    ifcPath: '../IFC/08.ifc'
   },
 ];
 

@@ -8,7 +8,7 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/',
-    ifcPath: './IFC/01.ifc'
+    ifcPath: '../IFC/01.ifc'
   },
   {
     id: 'project-002',
@@ -19,7 +19,7 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/02/',
-    ifcPath: './IFC/02.ifc'
+    ifcPath: '../IFC/02.ifc'
   },
   {
     id: 'project-003',
@@ -30,7 +30,7 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/03/',
-    ifcPath: './IFC/03.ifc'
+    ifcPath: '../IFC/03.ifc'
   },
   {
     id: 'project-004',
@@ -41,7 +41,7 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/04/',
-    ifcPath: './IFC/04.ifc'
+    ifcPath: '../IFC/04.ifc'
   },
   {
     id: 'project-005',
@@ -52,7 +52,7 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
-    ifcPath: './IFC/05.ifc'
+    ifcPath: '../IFC/05.ifc'
   },
   {
     id: 'project-006',
@@ -63,7 +63,7 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
-    ifcPath: './IFC/06.ifc'
+    ifcPath: '../IFC/06.ifc'
   },
   {
     id: 'project-007',
@@ -74,7 +74,7 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
-    ifcPath: './IFC/07.ifc'
+    ifcPath: '../IFC/07.ifc'
   },
   {
     id: 'project-008',
@@ -85,7 +85,7 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
-    ifcPath: './IFC/08.ifc'
+    ifcPath: '../IFC/08.ifc'
   },
 ];
 
@@ -102567,12 +102567,14 @@ class CameraControls extends EventDispatcher {
     }
     /**
      * Set orbit point without moving the camera.
+     * SHOULD NOT RUN DURING ANIMATIONS. `setOrbitPoint()` will immediately fix the positions.
      * @param targetX
      * @param targetY
      * @param targetZ
      * @category Methods
      */
     setOrbitPoint(targetX, targetY, targetZ) {
+        this._camera.updateMatrixWorld();
         _xColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 0);
         _yColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 1);
         _zColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 2);
@@ -102713,9 +102715,10 @@ class CameraControls extends EventDispatcher {
      * @category Methods
      */
     saveState() {
-        this._target0.copy(this._target);
-        this._position0.copy(this._camera.position);
+        this.getTarget(this._target0);
+        this.getPosition(this._position0);
         this._zoom0 = this._zoom;
+        this._focalOffset0.copy(this._focalOffset);
     }
     /**
      * Sync camera-up direction.
