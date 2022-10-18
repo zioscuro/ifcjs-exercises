@@ -17,7 +17,7 @@ export const viewerHandler = (project) => {
 
   //Object to store the size of the viewport
   const size = {
-    width:  document.querySelector('.model-container').offsetWidth,
+    width: document.querySelector('.model-container').offsetWidth,
     height: document.querySelector('.model-container').offsetHeight,
   };
 
@@ -31,7 +31,7 @@ export const viewerHandler = (project) => {
   const camera = new PerspectiveCamera(75, size.width / size.height);
   camera.position.z = project.cameraPosition.z;
   camera.position.y = project.cameraPosition.y;
-  camera.position.x = project.cameraPosition.x;
+  camera.position.x = project.cameraPosition.x;  
 
   //Creates the lights of the scene
   const lightColor = 0xffffff;
@@ -65,6 +65,10 @@ export const viewerHandler = (project) => {
   const controls = new OrbitControls(camera, threeCanvas);
   controls.enableDamping = true;
   controls.target.set(-2, 0, 0);
+
+  var t = setInterval(() => console.log(controls.object.position) ,1000);
+
+  // console.log(controls.object.position)
 
   //Animation loop
   const animate = () => {

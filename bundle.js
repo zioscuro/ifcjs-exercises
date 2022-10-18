@@ -9,7 +9,7 @@ const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/',
     ifcPath: './IFC/01.ifc',
-    cameraPosition: {x: 1, y: 1, z:1}
+    cameraPosition: {x: 8, y: 5, z:15}
   },
   {
     id: 'project-002',
@@ -21,7 +21,7 @@ const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/02/',
     ifcPath: './IFC/02.ifc',
-    cameraPosition: {x: 20, y: 20, z:0}
+    cameraPosition: {x: 23, y: 10, z:14}
   },
   {
     id: 'project-003',
@@ -91052,7 +91052,7 @@ const viewerHandler = (project) => {
 
   //Object to store the size of the viewport
   const size = {
-    width:  document.querySelector('.model-container').offsetWidth,
+    width: document.querySelector('.model-container').offsetWidth,
     height: document.querySelector('.model-container').offsetHeight,
   };
 
@@ -91066,7 +91066,7 @@ const viewerHandler = (project) => {
   const camera = new PerspectiveCamera(75, size.width / size.height);
   camera.position.z = project.cameraPosition.z;
   camera.position.y = project.cameraPosition.y;
-  camera.position.x = project.cameraPosition.x;
+  camera.position.x = project.cameraPosition.x;  
 
   //Creates the lights of the scene
   const lightColor = 0xffffff;
@@ -91100,6 +91100,10 @@ const viewerHandler = (project) => {
   const controls = new OrbitControls(camera, threeCanvas);
   controls.enableDamping = true;
   controls.target.set(-2, 0, 0);
+
+  setInterval(() => console.log(controls.object.position) ,1000);
+
+  // console.log(controls.object.position)
 
   //Animation loop
   const animate = () => {

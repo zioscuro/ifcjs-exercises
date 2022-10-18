@@ -9,7 +9,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/',
     ifcPath: './IFC/01.ifc',
-    cameraPosition: {x: 1, y: 1, z:1}
+    cameraPosition: {x: 8, y: 5, z:15}
   },
   {
     id: 'project-002',
@@ -21,7 +21,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/02/',
     ifcPath: './IFC/02.ifc',
-    cameraPosition: {x: 20, y: 20, z:0}
+    cameraPosition: {x: 23, y: 10, z:14}
   },
   {
     id: 'project-003',
