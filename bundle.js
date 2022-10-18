@@ -44313,12 +44313,14 @@ class CameraControls extends EventDispatcher {
     }
     /**
      * Set orbit point without moving the camera.
+     * SHOULD NOT RUN DURING ANIMATIONS. `setOrbitPoint()` will immediately fix the positions.
      * @param targetX
      * @param targetY
      * @param targetZ
      * @category Methods
      */
     setOrbitPoint(targetX, targetY, targetZ) {
+        this._camera.updateMatrixWorld();
         _xColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 0);
         _yColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 1);
         _zColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 2);
@@ -44459,9 +44461,10 @@ class CameraControls extends EventDispatcher {
      * @category Methods
      */
     saveState() {
-        this._target0.copy(this._target);
-        this._position0.copy(this._camera.position);
+        this.getTarget(this._target0);
+        this.getPosition(this._position0);
         this._zoom0 = this._zoom;
+        this._focalOffset0.copy(this._focalOffset);
     }
     /**
      * Sync camera-up direction.
@@ -44861,7 +44864,7 @@ const subsetOfTHREE = {
   },
 };
 
-function viewerHandler() {
+const viewerHandler = () => {
   const canvas = document.querySelector('#model-viewer');
 
   const scene = new Scene();
@@ -44912,14 +44915,14 @@ function viewerHandler() {
   }
 
   animate();
-}
+};
 
-function createSceneObjects(scene) {
-  const geometry = new BoxGeometry(0.5, 0.5, 0.5);
+const createSceneObjects = (scene) => {
+  const geometry = new BoxGeometry(0.5, 0.5, 0.5);  
   const material = new MeshPhongMaterial({ color: 'orange' });
   const cubeMesh = new Mesh(geometry, material);
   scene.add(cubeMesh);
-}
+};
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');

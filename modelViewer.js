@@ -42,7 +42,7 @@ const subsetOfTHREE = {
   },
 };
 
-export function viewerHandler() {
+export const viewerHandler = () => {
   const canvas = document.querySelector('#model-viewer');
 
   const scene = new Scene();
@@ -95,8 +95,8 @@ export function viewerHandler() {
   animate();
 }
 
-function createSceneObjects(scene) {
-  const geometry = new BoxGeometry(0.5, 0.5, 0.5);
+const createSceneObjects = (scene) => {
+  const geometry = new BoxGeometry(0.5, 0.5, 0.5);  
   const material = new MeshPhongMaterial({ color: 'orange' });
   const cubeMesh = new Mesh(geometry, material);
   scene.add(cubeMesh);
