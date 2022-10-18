@@ -97,7 +97,7 @@ const projects = [
   },
 ];
 
-const controls = [
+const controls$1 = [
   {
     name: 'ruler',
     icon: 'fa-ruler',
@@ -91101,7 +91101,7 @@ const viewerHandler = (project) => {
   controls.enableDamping = true;
   controls.target.set(-2, 0, 0);
 
-  setInterval(() => console.log(controls.object.position) ,1000);
+  controlsCameraPosition();
 
   // console.log(controls.object.position)
 
@@ -91131,6 +91131,10 @@ const loadModel = async (scene, project) => {
   const ifcURL = project.ifcPath;
   const model = await ifcLoader.loadAsync(ifcURL);
   scene.add(model);
+};
+
+const controlsCameraPosition = () => {
+  setInterval(() => console.log(controls.object.position) ,1000);
 };
 
 const header = document.querySelector('header');
@@ -91285,7 +91289,7 @@ const renderProjectModel = (project) => {
   const modelNav = document.createElement('nav');
   modelNav.classList.add('project-options');
 
-  for (let control of controls) {
+  for (let control of controls$1) {
     const controlButton = document.createElement('button');
     const controlIcon = document.createElement('i');
 

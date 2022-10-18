@@ -66,7 +66,7 @@ export const viewerHandler = (project) => {
   controls.enableDamping = true;
   controls.target.set(-2, 0, 0);
 
-  var t = setInterval(() => console.log(controls.object.position) ,1000);
+  controlsCameraPosition()
 
   // console.log(controls.object.position)
 
@@ -97,3 +97,7 @@ const loadModel = async (scene, project) => {
   const model = await ifcLoader.loadAsync(ifcURL);
   scene.add(model);
 };
+
+const controlsCameraPosition = () => {
+  setInterval(() => console.log(controls.object.position) ,1000)
+}
