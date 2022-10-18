@@ -44313,14 +44313,12 @@ class CameraControls extends EventDispatcher {
     }
     /**
      * Set orbit point without moving the camera.
-     * SHOULD NOT RUN DURING ANIMATIONS. `setOrbitPoint()` will immediately fix the positions.
      * @param targetX
      * @param targetY
      * @param targetZ
      * @category Methods
      */
     setOrbitPoint(targetX, targetY, targetZ) {
-        this._camera.updateMatrixWorld();
         _xColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 0);
         _yColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 1);
         _zColumn.setFromMatrixColumn(this._camera.matrixWorldInverse, 2);
@@ -44461,10 +44459,9 @@ class CameraControls extends EventDispatcher {
      * @category Methods
      */
     saveState() {
-        this.getTarget(this._target0);
-        this.getPosition(this._position0);
+        this._target0.copy(this._target);
+        this._position0.copy(this._camera.position);
         this._zoom0 = this._zoom;
-        this._focalOffset0.copy(this._focalOffset);
     }
     /**
      * Sync camera-up direction.
@@ -44867,19 +44864,13 @@ const subsetOfTHREE = {
 function viewerHandler() {
   const canvas = document.querySelector('#model-viewer');
 
-  // 1 SCENA
   const scene = new Scene();
   const axes = new AxesHelper();
   const grid = new GridHelper();
   scene.add(axes, grid);
 
-  //2 OGGETTI
-  const geometry = new BoxGeometry(0.5, 0.5, 0.5);
-  const material = new MeshPhongMaterial({ color: 'orange' });
-  const cubeMesh = new Mesh(geometry, material);
-  scene.add(cubeMesh);
+  createSceneObjects(scene);
 
-  //3 CAMERA
   const camera = new PerspectiveCamera(
     75,
     canvas.clientWidth / canvas.clientHeight
@@ -44889,28 +44880,21 @@ function viewerHandler() {
   camera.position.z = 1;
   scene.add(camera);
 
-  //4 RENDERER
   const renderer = new WebGLRenderer({
     canvas: canvas,
   });
   renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
   renderer.setClearColor(0xffffff);
 
-  //5 LUCI
   const light = new DirectionalLight(0xffffff, 1);
   light.position.set(1, 1, 0.5);
   const baseLight = new AmbientLight(0xffffff, 1);
   scene.add(light, baseLight);
 
-  //6 CONTROLLI CAMERA
   CameraControls.install({ THREE: subsetOfTHREE });
   const clock = new Clock();
   const cameraControls = new CameraControls(camera, canvas);
-  // cameraControls.setLookAt(15, 15, 15, 0, 10, 0);
 
-  //7 RAYCASTING ED ETICHETTE
-
-  // 8 GESTIONE RESIZE ED ANIMAZIONE
   window.addEventListener('resize', () => {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
@@ -44928,6 +44912,13 @@ function viewerHandler() {
   }
 
   animate();
+}
+
+function createSceneObjects(scene) {
+  const geometry = new BoxGeometry(0.5, 0.5, 0.5);
+  const material = new MeshPhongMaterial({ color: 'orange' });
+  const cubeMesh = new Mesh(geometry, material);
+  scene.add(cubeMesh);
 }
 
 const header = document.querySelector('header');
