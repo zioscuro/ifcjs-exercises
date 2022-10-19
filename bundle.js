@@ -97,7 +97,7 @@ const projects = [
   },
 ];
 
-const controls$1 = [
+const controls = [
   {
     name: 'ruler',
     icon: 'fa-ruler',
@@ -91056,17 +91056,11 @@ const viewerHandler = (project) => {
     height: document.querySelector('.model-container').offsetHeight,
   };
 
-  // console.log(window.innerWidth)
-
-  // console.log(document.querySelector('.model-container'))
-  // console.log(canvasWidth)
-  // console.log(canvasHeight)
-
   //Creates the camera (point of view of the user)
   const camera = new PerspectiveCamera(75, size.width / size.height);
   camera.position.z = project.cameraPosition.z;
   camera.position.y = project.cameraPosition.y;
-  camera.position.x = project.cameraPosition.x;  
+  camera.position.x = project.cameraPosition.x;
 
   //Creates the lights of the scene
   const lightColor = 0xffffff;
@@ -91101,9 +91095,7 @@ const viewerHandler = (project) => {
   controls.enableDamping = true;
   controls.target.set(-2, 0, 0);
 
-  controlsCameraPosition();
-
-  // console.log(controls.object.position)
+  controlsCameraPosition(controls);
 
   //Animation loop
   const animate = () => {
@@ -91133,8 +91125,8 @@ const loadModel = async (scene, project) => {
   scene.add(model);
 };
 
-const controlsCameraPosition = () => {
-  setInterval(() => console.log(controls.object.position) ,1000);
+const controlsCameraPosition = (controls) => {
+  setInterval(() => console.log(controls.object.position), 1000);
 };
 
 const header = document.querySelector('header');
@@ -91289,7 +91281,7 @@ const renderProjectModel = (project) => {
   const modelNav = document.createElement('nav');
   modelNav.classList.add('project-options');
 
-  for (let control of controls$1) {
+  for (let control of controls) {
     const controlButton = document.createElement('button');
     const controlIcon = document.createElement('i');
 

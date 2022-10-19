@@ -21,17 +21,11 @@ export const viewerHandler = (project) => {
     height: document.querySelector('.model-container').offsetHeight,
   };
 
-  // console.log(window.innerWidth)
-
-  // console.log(document.querySelector('.model-container'))
-  // console.log(canvasWidth)
-  // console.log(canvasHeight)
-
   //Creates the camera (point of view of the user)
   const camera = new PerspectiveCamera(75, size.width / size.height);
   camera.position.z = project.cameraPosition.z;
   camera.position.y = project.cameraPosition.y;
-  camera.position.x = project.cameraPosition.x;  
+  camera.position.x = project.cameraPosition.x;
 
   //Creates the lights of the scene
   const lightColor = 0xffffff;
@@ -66,9 +60,7 @@ export const viewerHandler = (project) => {
   controls.enableDamping = true;
   controls.target.set(-2, 0, 0);
 
-  controlsCameraPosition()
-
-  // console.log(controls.object.position)
+  controlsCameraPosition(controls);
 
   //Animation loop
   const animate = () => {
@@ -98,6 +90,6 @@ const loadModel = async (scene, project) => {
   scene.add(model);
 };
 
-const controlsCameraPosition = () => {
-  setInterval(() => console.log(controls.object.position) ,1000)
-}
+const controlsCameraPosition = (controls) => {
+  setInterval(() => console.log(controls.object.position), 1000);
+};
