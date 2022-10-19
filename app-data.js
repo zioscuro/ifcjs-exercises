@@ -21,7 +21,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/02/',
     ifcPath: './IFC/02.ifc',
-    cameraPosition: {x: 23, y: 10, z:14}
+    cameraPosition: {x: 17, y: 7, z:11}
   },
   {
     id: 'project-003',
@@ -33,7 +33,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/03/',
     ifcPath: './IFC/03.ifc',
-    cameraPosition: {x: 30, y: 1, z:30}
+    cameraPosition: {x: 35, y: 11, z:-29}
   },
   {
     id: 'project-004',
@@ -45,7 +45,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/04/',
     ifcPath: './IFC/04.ifc',
-    cameraPosition: {x: 1, y: 1, z:1}
+    cameraPosition: {x: -21, y: 12, z:20}
   },
   {
     id: 'project-005',
@@ -57,7 +57,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/05.ifc',
-    cameraPosition: {x: 1, y: 1, z:1}
+    cameraPosition: {x: 88, y: 29, z:-52}
   },
   {
     id: 'project-006',
@@ -69,7 +69,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/06.ifc',
-    cameraPosition: {x: 1, y: 1, z:1}
+    cameraPosition: {x: 25, y: 6, z:-12}
   },
   {
     id: 'project-007',
@@ -81,7 +81,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/07.ifc',
-    cameraPosition: {x: 1, y: 1, z:1}
+    cameraPosition: {x: -26, y: 17, z:22.5}
   },
   {
     id: 'project-008',
@@ -93,7 +93,7 @@ export const projects = [
     description: 'this is a sample project for now...',
     link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/08.ifc',
-    cameraPosition: {x: 1, y: 1, z:1}
+    cameraPosition: {x: 11.5, y: 5.5, z:30}
   },
 ];
 
