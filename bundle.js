@@ -91095,7 +91095,7 @@ const viewerHandler = (project) => {
   controls.enableDamping = true;
   controls.target.set(-2, 0, 0);
 
-  controlsCameraPosition(controls);
+  // controlsCameraPosition(controls);
 
   //Animation loop
   const animate = () => {
@@ -91123,10 +91123,6 @@ const loadModel = async (scene, project) => {
   const ifcURL = project.ifcPath;
   const model = await ifcLoader.loadAsync(ifcURL);
   scene.add(model);
-};
-
-const controlsCameraPosition = (controls) => {
-  setInterval(() => console.log(controls.object.position), 1000);
 };
 
 const header = document.querySelector('header');

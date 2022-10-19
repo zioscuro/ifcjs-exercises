@@ -60,7 +60,7 @@ export const viewerHandler = (project) => {
   controls.enableDamping = true;
   controls.target.set(-2, 0, 0);
 
-  controlsCameraPosition(controls);
+  // controlsCameraPosition(controls);
 
   //Animation loop
   const animate = () => {
