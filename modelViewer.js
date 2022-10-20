@@ -75,7 +75,8 @@ export const viewerHandler = (project) => {
   window.addEventListener('resize', () => {
     const canvas = document.querySelector('.model-container');
 
-    (size.width = canvas.offsetWidth), (size.height = canvas.offsetHeight);
+    size.width = canvas.offsetWidth;
+    // size.height = canvas.offsetHeight;
     camera.aspect = size.width / size.height;
     camera.updateProjectionMatrix();
     renderer.setSize(size.width, size.height);

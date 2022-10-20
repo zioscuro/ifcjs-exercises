@@ -8,7 +8,7 @@ export const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/01.ifc',
-    cameraPosition: {x: 8, y: 5, z:15}
+    cameraPosition: {x: 6.5, y: 4, z:13}
   },
   {
     id: 'project-002',
