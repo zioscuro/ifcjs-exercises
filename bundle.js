@@ -7,7 +7,6 @@ const projects = [
     year: '2022',
     type: 'conceptual design',
     description: 'this is a sample project for now...',
-    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/01/',
     ifcPath: './IFC/01.ifc',
     cameraPosition: {x: 8, y: 5, z:15}
   },
@@ -19,7 +18,6 @@ const projects = [
     year: '2022',
     type: 'conceptual design',
     description: 'this is a sample project for now...',
-    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/02/',
     ifcPath: './IFC/02.ifc',
     cameraPosition: {x: 17, y: 7, z:11}
   },
@@ -31,7 +29,6 @@ const projects = [
     year: '2022',
     type: 'conceptual design',
     description: 'this is a sample project for now...',
-    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/03/',
     ifcPath: './IFC/03.ifc',
     cameraPosition: {x: 35, y: 11, z:-29}
   },
@@ -43,7 +40,6 @@ const projects = [
     year: '2022',
     type: 'conceptual design',
     description: 'this is a sample project for now...',
-    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/04/',
     ifcPath: './IFC/04.ifc',
     cameraPosition: {x: -21, y: 12, z:20}
   },
@@ -55,7 +51,6 @@ const projects = [
     year: '2022',
     type: 'conceptual design',
     description: 'this is a sample project for now...',
-    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/05.ifc',
     cameraPosition: {x: 88, y: 29, z:-52}
   },
@@ -67,7 +62,6 @@ const projects = [
     year: '2022',
     type: 'conceptual design',
     description: 'this is a sample project for now...',
-    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/06.ifc',
     cameraPosition: {x: 25, y: 6, z:-12}
   },
@@ -79,7 +73,6 @@ const projects = [
     year: '2022',
     type: 'conceptual design',
     description: 'this is a sample project for now...',
-    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/07.ifc',
     cameraPosition: {x: -26, y: 17, z:22.5}
   },
@@ -91,7 +84,6 @@ const projects = [
     year: '2022',
     type: 'conceptual design',
     description: 'this is a sample project for now...',
-    link: 'https://ifcjs.github.io/ifcjs-crash-course/sample-apps/05/',
     ifcPath: './IFC/08.ifc',
     cameraPosition: {x: 11.5, y: 5.5, z:30}
   },
@@ -91242,7 +91234,6 @@ const renderProjectInfo = (project) => {
 
   const filteredProject = { ...project };
   delete filteredProject.id;
-  delete filteredProject.link;
   delete filteredProject.ifcPath;
   delete filteredProject.cameraPosition;
 

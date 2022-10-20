@@ -118,7 +118,6 @@ const renderProjectInfo = (project) => {
 
   const filteredProject = { ...project };
   delete filteredProject.id;
-  delete filteredProject.link;
   delete filteredProject.ifcPath;
   delete filteredProject.cameraPosition;
 
