@@ -8,7 +8,11 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/01.ifc',
-    cameraPosition: {x: 6.5, y: 4, z:13}
+    cameraPosition: {
+      distance: 30,
+      azimuthAngle: 0,
+      polarAngle: 0,
+    },
   },
   {
     id: 'project-002',
@@ -19,7 +23,11 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/02.ifc',
-    cameraPosition: {x: 17, y: 7, z:11}
+    cameraPosition: {
+      distance: 40,
+      azimuthAngle: 0,
+      polarAngle: 0,
+    },
   },
   {
     id: 'project-003',
@@ -30,7 +38,11 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/03.ifc',
-    cameraPosition: {x: 35, y: 11, z:-29}
+    cameraPosition: {
+      distance: 30,
+      azimuthAngle: 0,
+      polarAngle: 0,
+    },
   },
   {
     id: 'project-004',
@@ -41,7 +53,11 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/04.ifc',
-    cameraPosition: {x: -21, y: 12, z:20}
+    cameraPosition: {
+      distance: 10,
+      azimuthAngle: 0,
+      polarAngle: 0,
+    },
   },
   {
     id: 'project-005',
@@ -52,7 +68,11 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/05.ifc',
-    cameraPosition: {x: 88, y: 29, z:-52}
+    cameraPosition: {
+      distance: 10,
+      azimuthAngle: 0,
+      polarAngle: 0,
+    },
   },
   {
     id: 'project-006',
@@ -63,7 +83,11 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/06.ifc',
-    cameraPosition: {x: 25, y: 6, z:-12}
+    cameraPosition: {
+      distance: 10,
+      azimuthAngle: 0,
+      polarAngle: 0,
+    },
   },
   {
     id: 'project-007',
@@ -74,7 +98,11 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/07.ifc',
-    cameraPosition: {x: -26, y: 17, z:22.5}
+    cameraPosition: {
+      distance: 10,
+      azimuthAngle: 0,
+      polarAngle: 0,
+    },
   },
   {
     id: 'project-008',
@@ -85,7 +113,11 @@ const projects = [
     type: 'conceptual design',
     description: 'this is a sample project for now...',
     ifcPath: './IFC/08.ifc',
-    cameraPosition: {x: 11.5, y: 5.5, z:30}
+    cameraPosition: {
+      distance: 10,
+      azimuthAngle: 0,
+      polarAngle: 0,
+    },
   },
 ];
 
@@ -121935,20 +121967,30 @@ class IfcViewerAPI {
 }
 
 const viewerHandler = (project) => {
-  console.log(project.ifcPath);
-
   const container = document.getElementById('model-viewer');
   const viewer = new IfcViewerAPI({
     container,
     backgroundColor: new Color(0xffffff),
   });
-  
-  async function loadIfc(url) {
-    await viewer.IFC.loadIfcUrl(url); 
-  }
-  
-  loadIfc(project.ifcPath);
+
+  setCameraPosition(viewer, project.cameraPosition);
+
+  loadIfc(viewer, project.ifcPath);
 };
+
+function setCameraPosition(viewer, cameraPosition) {
+  const cameraControls = viewer.context.getIfcCamera().cameraControls;
+
+  cameraControls.distance = cameraPosition.distance;
+  cameraControls.rotate(
+    cameraPosition.azimuthAngle,
+    cameraPosition.polarAngle
+  );
+}
+
+async function loadIfc(viewer, url) {
+  await viewer.IFC.loadIfcUrl(url);
+}
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
