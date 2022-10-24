@@ -146,7 +146,7 @@ const renderProjectModel = (project) => {
   modelContainer.classList.add('animate__animated');
   modelContainer.classList.add('animate__fadeInRight');
 
-  const modelViewer = document.createElement('canvas');
+  const modelViewer = document.createElement('div');
   modelViewer.setAttribute('id', 'model-viewer');
 
   const modelNav = document.createElement('nav');
